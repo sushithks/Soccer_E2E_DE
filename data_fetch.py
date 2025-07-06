@@ -30,3 +30,17 @@ def get_wikipedia_data(html):
     return table_rows
 
 print(get_wikipedia_data(html))
+
+
+
+def clean_text(text):
+    text = str(text).strip()
+    text = text.replace('&nbsp', '')
+    if text.find(' ♦'):
+        text = text.split(' ♦')[0]
+    if text.find('[') != -1:
+        text = text.split('[')[0]
+
+    return text.replace('\n', '')
+
+print(clean_text('Ohio Stadium,102,780,North America,United States,Columbus Ohio,Ohio State Buckeyes football'))
