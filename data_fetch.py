@@ -40,7 +40,8 @@ def clean_text(text):
         text = text.split(' ♦')[0]
     if text.find('[') != -1:
         text = text.split('[')[0]
-
+    if text.find(' (formerly)') != -1:
+        text = text.split(' (formerly)')[0]
     return text.replace('\n', '')
 
 print(clean_text('Ohio Stadium,102,780,North America,United States,Columbus Ohio,Ohio State Buckeyes football'))
