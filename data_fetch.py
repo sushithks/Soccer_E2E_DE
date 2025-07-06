@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 
 NO_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/No-image-available.png/480px-No-image-available.png'
 
@@ -17,4 +18,15 @@ def get_wikipedia_page(url):
         print(f"An error occured: {e}")
 
 
-print(get_wikipedia_page(urls))
+html = get_wikipedia_page(urls)
+
+def get_wikipedia_data(html):
+
+    soup = BeautifulSoup(html, 'html.parser')
+    table = soup.find_all("table", {"class": "wikitable sortable"})[0]
+
+    table_rows = table.find_all('tr')
+
+    return table_rows
+
+print(get_wikipedia_data(html))
