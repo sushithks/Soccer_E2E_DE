@@ -18,7 +18,7 @@ def get_wikipedia_page(url):
         print(f"An error occured: {e}")
 
 
-print(get_wikipedia_page(urls))
+html = get_wikipedia_page(urls)
 
 def get_wikipedia_data(html):
 
@@ -28,3 +28,5 @@ def get_wikipedia_data(html):
     table_rows = table.find_all('tr')
 
     return table_rows
+
+print(get_wikipedia_data(html))
