@@ -60,7 +60,10 @@ def extract_wikipedia_data(**kwargs):
             'rank': i,
             'stadium': clean_text(tds[0].text),
             'capacity': clean_text(tds[1].text).replace(',', '').replace('.', ''),
-
+            'region': clean_text(tds[2].text),
+            'country': clean_text(tds[3].text),
+            'city': clean_text(tds[4].text),
+            'home_team': clean_text(tds[6].text),
         }
         data.append(values)
 
