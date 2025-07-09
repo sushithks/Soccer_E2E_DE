@@ -45,3 +45,26 @@ def clean_text(text):
     return text.replace('\n', '')
 
 print(clean_text('Ohio Stadium,102,780,North America,United States,Columbus Ohio,Ohio State Buckeyes football'))
+
+
+def extract_wikipedia_data(**kwargs):
+    url = kwargs['url']
+    html = get_wikipedia_page(url)
+    rows = get_wikipedia_data(html)
+
+    data = []
+
+    for i in range(1, len(rows)):
+        tds = rows[i].find_all('td')
+        values = {
+            'rank': i,
+            'stadium': clean_text(tds[0].text),
+            'capacity': clean_text(tds[1].text).replace(',', '').replace('.', ''),
+
+        }
+        data.append(values)
+
+    json_rows = json.dumps(data)
+    kwargs['ti'].xcom_push(key='rows', value=json_rows)
+
+    return "Done"
