@@ -76,7 +76,7 @@ def extract_wikipedia_data(**kwargs):
 
 def get_lat(country, city):
     geolocator = Nominatim(user_agent='geoapiExercises')
-    location = geolocator.geocode(f'{city}')
+    location = geolocator.geocode(f'{city}, {country}')
 
     if location:
         return location.latitude
