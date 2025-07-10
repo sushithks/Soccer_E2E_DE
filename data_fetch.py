@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from geopy import Nominatim
 
 NO_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/No-image-available.png/480px-No-image-available.png'
 
@@ -72,3 +73,12 @@ def extract_wikipedia_data(**kwargs):
     kwargs['ti'].xcom_push(key='rows', value=json_rows)
 
     return "Done"
+
+def get_lat_long(country, city):
+    geolocator = Nominatim(user_agent='geoapiExercises')
+    location = geolocator.geocode(f'{city}, {country}')
+
+    if location:
+        return location.latitude, location.longitude
+
+    return None
