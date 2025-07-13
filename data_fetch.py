@@ -118,5 +118,5 @@ def write_wikipedia_data(**kwargs):
 
     data.to_csv('abfs://footballdataeng@footballdataeng.dfs.core.windows.net/data/' + file_name,
                 storage_options={
-                    'account_key': 'pcrbWAsuPmzOH43lu1xang05pIs+g1Lys/bor0z59O38sVyWQNQ64AtEveMobZ2pIwCjqximReKY+ASt9dP/+A=='
+                    'account_key': 'pcrbWAsuPmzOH43lu1xang05pIs+g1Lys'
                 }, index=False)
