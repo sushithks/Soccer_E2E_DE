@@ -104,3 +104,16 @@ def transform_wikipedia_data(**kwargs):
     kwargs['ti'].xcom_push(key='rows', value=stadiums_df.to_json())
 
     return "OK"
+
+
+
+def write_wikipedia_data(**kwargs):
+    from datetime import datetime
+    data = kwargs['ti'].xcom_pull(key='rows', task_ids='transform_wikipedia_data')
+    data = json.loads(data)
+    data = pd.DataFrame(data)
+
+    file_name = ('stadium_cleaned_' + str(datetime.now().date())
+                 + "_" + str(datetime.now().time()).replace(":", "_") + '.csv')
+
+    data.to_csv('abfs://footballdataeng@footballdataeng.dfs.core.windows.net/data/' + file_name, index=False)
