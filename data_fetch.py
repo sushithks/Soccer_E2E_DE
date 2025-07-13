@@ -97,6 +97,7 @@ def transform_wikipedia_data(**kwargs):
 
     # handle the duplicates
     duplicates = stadiums_df[stadiums_df.duplicated(['location'])]
+    duplicates['location'] = duplicates.apply(lambda x: get_lat_long(x['country'], x['city']), axis=1)
     stadiums_df.update(duplicates)
 
     # push to xcom
