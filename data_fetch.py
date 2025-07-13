@@ -110,6 +110,7 @@ def transform_wikipedia_data(**kwargs):
 def write_wikipedia_data(**kwargs):
     from datetime import datetime
     data = kwargs['ti'].xcom_pull(key='rows', task_ids='transform_wikipedia_data')
+    data = json.loads(data)
     data = pd.DataFrame(data)
 
     file_name = ('stadium_cleaned_' + str(datetime.now().date())
