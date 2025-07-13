@@ -95,6 +95,11 @@ def transform_wikipedia_data(**kwargs):
     stadiums_df['capacity'] = stadiums_df['capacity'].astype(int)
     stadiums_df.update(stadiums_df)
 
+    # handle the duplicates
+    duplicates = stadiums_df[stadiums_df.duplicated(['location'])]
+    duplicates['location'] = duplicates.apply(lambda x: get_lat_long(x['country'], x['city']), axis=1)
+    stadiums_df.update(duplicates)
+
     # push to xcom
     kwargs['ti'].xcom_push(key='rows', value=stadiums_df.to_json())
 
