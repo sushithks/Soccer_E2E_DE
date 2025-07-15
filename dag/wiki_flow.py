@@ -4,6 +4,7 @@ from datetime import datetime
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from airflow.operators.dummy import DummyOperator
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from main.data_fetch import extract_wikipedia_data, transform_wikipedia_data
@@ -17,6 +18,9 @@ dag = DAG(
     schedule_interval=None,
     catchup=False
 )
+dag_start = DummyOperator(
+    task_id='dag_start',
+    dag=dag)
 
 
 extract_data_from_wikipedia = PythonOperator(
