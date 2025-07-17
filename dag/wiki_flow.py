@@ -7,7 +7,7 @@ from airflow.operators.python import PythonOperator
 from airflow.operators.dummy import DummyOperator
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from main.data_fetch import extract_wikipedia_data, transform_wikipedia_data
+from main.data_fetch import extract_wikipedia_data, transform_wikipedia_data, write_wikipedia_data
 
 dag = DAG(
     dag_id='wikipedia_flow',
@@ -35,5 +35,12 @@ transform_wikipedia_data = PythonOperator(
     task_id='transform_wikipedia_data',
     provide_context=True,
     python_callable=transform_wikipedia_data,
+    dag=dag
+)
+
+write_wikipedia_data = PythonOperator(
+    task_id='write_wikipedia_data',
+    provide_context=True,
+    python_callable=write_wikipedia_data,
     dag=dag
 )
