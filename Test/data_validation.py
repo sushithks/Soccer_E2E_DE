@@ -1,11 +1,12 @@
 
 import pandas as pd
 
+data = pd.read_csv('stadium_data.csv')
+#print(data.count())
 
-def validation(**kwargs):
 
-    data = kwargs['ti'].xcom_pull(key='rows', task_ids='transform_wikipedia_data')
-    data = json.loads(data)
+def validation(data):
+
     stadiums_df = pd.DataFrame(data)
 
     # Group by country and count
@@ -14,3 +15,4 @@ def validation(**kwargs):
     validate_df = country_counts.sort_values(by=['stadium_count', 'country'], ascending=[False, True])
 
     print(validate_df)
+
