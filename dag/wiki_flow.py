@@ -44,3 +44,10 @@ write_wikipedia_data = PythonOperator(
     python_callable=write_wikipedia_data,
     dag=dag
 )
+
+dag_end = DummyOperator(
+    task_id='dag_end',
+    dag=dag)
+
+extract_data_from_wikipedia.set_downstream(transform_wikipedia_data)
+transform_wikipedia_data.set_downstream(write_wikipedia_data)
