@@ -5,7 +5,7 @@ data = pd.read_csv('stadium_data.csv')
 #print(data.count())
 
 
-def validation(data):
+def stadium_count(data):
 
     stadiums_df = pd.DataFrame(data)
 
@@ -16,3 +16,20 @@ def validation(data):
 
     print(validate_df)
 
+
+
+
+def stadium_capacity(data):
+    stadiums_df = pd.DataFrame(data)
+
+    stadiums_df['capacity'] = pd.to_numeric(stadiums_df['capacity'], errors='coerce')
+    grouped_df = stadiums_df.groupby('region')['capacity'].mean()
+
+    # Reset index to turn the result into a DataFrame
+    grouped_df = grouped_df.reset_index()
+
+    grouped_df = grouped_df.rename(columns={'capacity': 'avg_capacity'})
+    grouped_df = grouped_df.sort_values(by='avg_capacity', ascending=False)
+
+    # Final result
+    print(grouped_df)
