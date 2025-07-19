@@ -5,7 +5,7 @@ data = pd.read_csv('stadium_data.csv')
 #print(data.count())
 
 
-def validation(data):
+def stadium_count(data):
 
     stadiums_df = pd.DataFrame(data)
 
@@ -15,4 +15,5 @@ def validation(data):
     validate_df = country_counts.sort_values(by=['stadium_count', 'country'], ascending=[False, True])
 
     print(validate_df)
+
 
