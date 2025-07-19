@@ -17,3 +17,18 @@ def stadium_count(data):
     print(validate_df)
 
 
+
+
+def stadium_capacity(data):
+    stadiums_df = pd.DataFrame(data)
+
+    grouped_df = stadiums_df.groupby('region')['capacity'].mean()
+
+    # Reset index to turn the result into a DataFrame
+    grouped_df = grouped_df.reset_index()
+
+    grouped_df = grouped_df.rename(columns={'capacity': 'avg_capacity'})
+    grouped_df = grouped_df.sort_values(by='avg_capacity', ascending=False)
+
+    # Final result
+    print(grouped_df)
