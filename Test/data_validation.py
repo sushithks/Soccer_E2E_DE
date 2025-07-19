@@ -22,6 +22,7 @@ def stadium_count(data):
 def stadium_capacity(data):
     stadiums_df = pd.DataFrame(data)
 
+    stadiums_df['capacity'] = pd.to_numeric(stadiums_df['capacity'], errors='coerce')
     grouped_df = stadiums_df.groupby('region')['capacity'].mean()
 
     # Reset index to turn the result into a DataFrame
