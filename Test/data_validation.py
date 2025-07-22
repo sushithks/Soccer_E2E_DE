@@ -33,3 +33,15 @@ def stadium_capacity(data):
 
     # Final result
     print(grouped_df)
+
+
+
+def stadium_rank(data) :
+
+    stadiums_df = pd.DataFrame(data)
+
+    stadiums_df['region_rank'] = stadiums_df.groupby('region')['capacity'] \
+        .rank(method='min', ascending=False)
+
+
+    ranked_df = stadiums_df[['rank', 'stadium', 'region', 'region_rank']]
