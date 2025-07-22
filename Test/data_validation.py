@@ -53,3 +53,4 @@ def stadium_rank(data) :
 
 
     ranked_df = stadiums_df[['rank', 'stadium', 'region', 'region_rank']]
+    return ranked_df
