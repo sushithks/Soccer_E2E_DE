@@ -5,6 +5,13 @@ data = pd.read_csv('stadium_data.csv')
 #print(data.count())
 
 
+def top_stadium(data):
+    stadiums_df = pd.DataFrame(data)
+    top_5 = stadiums_df.sort_values(by='capacity', ascending=False).head(5)
+
+    top_stadium_df = top_5[['rank', 'stadium', 'capacity']]
+    return top_stadium_df
+
 def stadium_count(data):
 
     stadiums_df = pd.DataFrame(data)
@@ -33,3 +40,17 @@ def stadium_capacity(data):
 
     # Final result
     print(grouped_df)
+
+
+
+def stadium_rank(data) :
+
+    stadiums_df = pd.DataFrame(data)
+    stadiums_df['capacity'] = pd.to_numeric(stadiums_df['capacity'], errors='coerce')
+
+    stadiums_df['region_rank'] = stadiums_df.groupby('region')['capacity'] \
+        .rank(method='min', ascending=False)
+
+
+    ranked_df = stadiums_df[['rank', 'stadium', 'region', 'region_rank']]
+    return ranked_df
