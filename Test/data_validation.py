@@ -54,3 +54,25 @@ def stadium_rank(data) :
 
     ranked_df = stadiums_df[['rank', 'stadium', 'region', 'region_rank']]
     return ranked_df
+
+def stadium_capacity_avg(data):
+    stadiums_df = pd.DataFrame(data)
+
+
+    # Step 1: Calculate avg_capacity per region
+    avg_df = (
+        stadiums_df.groupby('region', as_index=False)['capacity']
+        .mean()
+        .rename(columns={'capacity': 'avg_capacity'})
+    )
+
+    # Step 2: Merge original df with the average df
+    merged_df = pd.merge(stadiums_df, avg_df, on='region', how='left')
+
+    # Step 3: Filter rows where capacity > avg_capacity
+    filtered_df = merged_df[merged_df['capacity'] > merged_df['capacity']]
+
+    # Step 4: Select required columns and sort
+    result = filtered_df[['stadium', 'region', 'capacity', 'avg_capacity']].sort_values(by='region')
+
+    print(result)
