@@ -71,7 +71,7 @@ def stadium_capacity_avg(data):
     merged_df = pd.merge(stadiums_df, avg_df, on='region', how='left')
 
     # Step 3: Filter rows where capacity > avg_capacity
-    filtered_df = merged_df[merged_df['capacity'] > merged_df['capacity']]
+    filtered_df = merged_df[merged_df['capacity'] > merged_df['avg_capacity']]
 
     capacity_df = filtered_df[['stadium', 'region', 'capacity', 'avg_capacity']].sort_values(by='region')
     return capacity_df
