@@ -10,15 +10,17 @@ class TestTopStadium(unittest.TestCase):
             {'rank': 2, 'stadium': 'Wembley Stadium', 'capacity': 80000},
             {'rank': 3, 'stadium': 'stadio Azteca', 'capacity': 75000},
             {'rank': 4, 'stadium': 'Croke Park', 'capacity': 70000},
-
+            {'rank': 5, 'stadium': 'Shah Alam Stadium', 'capacity': 85000},
+            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000},
         ]
 
         # Expected output DataFrame
         expected = pd.DataFrame([
             {'rank': 1, 'stadium': 'Michigan Stadium', 'capacity': 90000},
+            {'rank': 5, 'stadium': 'hah Alam Stadium', 'capacity': 85000},
             {'rank': 2, 'stadium': 'SWembley Stadium', 'capacity': 80000},
             {'rank': 3, 'stadium': 'stadio Azteca', 'capacity': 75000},
-            {'rank': 4, 'stadium': 'SCroke Park', 'capacity': 70000},
+            {'rank': 4, 'stadium': 'Croke Park', 'capacity': 70000},
         ])
 
         # Call the function
