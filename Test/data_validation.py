@@ -75,3 +75,28 @@ def stadium_capacity_avg(data):
 
     capacity_df = filtered_df[['stadium', 'region', 'capacity', 'avg_capacity']].sort_values(by='region')
     return capacity_df
+
+def stadium_regional_capacity(data) :
+
+    stadiums_df = pd.DataFrame(data)
+
+    # Compute the median capacity per region
+    median_df = (
+        stadiums_df.groupby('region')['capacity']
+        .median()
+        .reset_index()
+        .rename(columns={'capacity': 'median_capacity'})
+    )
+
+    # Merge original DataFrame with median capacities
+    merged = pd.merge(stadiums_df, median_df, on='region')
+
+    # Compute absolute difference from median
+    merged['abs_diff'] = (merged['capacity'] - merged['median_capacity']).abs()
+
+    # Filter to get only the closest stadium(s) per region
+    closest_to_median = merged[merged['median_rank'] == 1]
+
+    result = closest_to_median[['rank', 'stadium', 'region', 'capacity', 'median_rank']]
+
+    print(result)
