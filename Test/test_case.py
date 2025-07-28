@@ -40,7 +40,7 @@ class stadium_count(unittest.TestCase):
             {'rank': 3, 'stadium': 'Stadio Azteca', 'capacity': 75000, 'country': 'Mexico'},
             {'rank': 4, 'stadium': 'Croke Park', 'capacity': 70000, 'country': 'Ireland'},
             {'rank': 5, 'stadium': 'Shah Alam Stadium', 'capacity': 85000, 'country': 'Malaysia'},
-            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA'},
+            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA'}
         ]
 
         # Expected output DataFrame
