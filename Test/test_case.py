@@ -40,7 +40,7 @@ class stadium_count(unittest.TestCase):
             {'rank': 3, 'stadium': 'Stadio Azteca', 'capacity': 75000, 'country': 'Mexico'},
             {'rank': 4, 'stadium': 'Croke Park', 'capacity': 70000, 'country': 'Ireland'},
             {'rank': 5, 'stadium': 'Shah Alam Stadium', 'capacity': 85000, 'country': 'Malaysia'},
-            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA'},
+            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA'}
         ]
 
         # Expected output DataFrame
@@ -57,6 +57,35 @@ class stadium_count(unittest.TestCase):
 
         # Reset index for comparison (optional)
         pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
+
+
+
+
+class stadium_capacity(unittest.TestCase):
+    def test_returns_stadium_capacity(self):
+        # Sample input data
+        data = [
+            {'rank': 1, 'stadium': 'Michigan Stadium', 'capacity': 90000, 'country': 'USA', 'region': 'North America'},
+            {'rank': 2, 'stadium': 'Wembley Stadium', 'capacity': 80000, 'country': 'UK', 'region': 'Europe'},
+            {'rank': 3, 'stadium': 'Stadio Azteca', 'capacity': 75000, 'country': 'Mexico', 'region': 'North America'},
+            {'rank': 4, 'stadium': 'Croke Park', 'capacity': 70000, 'country': 'Ireland', 'region': 'Europe'},
+            {'rank': 5, 'stadium': 'Shah Alam Stadium', 'capacity': 85000, 'country': 'Malaysia', 'region': 'East Asia'},
+            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA', 'region': 'North America'}
+        ]
+
+        # Expected output DataFrame
+        expected = pd.DataFrame([
+            {'region': 'East Asia', 'avg_capacity': 85000.0},
+            {'region': 'North America', 'avg_capacity': 75000.0},
+            {'region': 'Europe', 'avg_capacity': 75000.0}
+        ])
+
+        # Call the function
+        result = stadium_capacity(data)
+
+        # Reset index for comparison (optional)
+        pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
+
 
 
 if __name__ == '__main__':
