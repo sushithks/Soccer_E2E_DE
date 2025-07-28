@@ -75,7 +75,9 @@ class stadium_capacity(unittest.TestCase):
 
         # Expected output DataFrame
         expected = pd.DataFrame([
-
+            {'region': 'East Asia', 'avg_capacity': 85000.0},
+            {'region': 'North America', 'avg_capacity': 75000.0},
+            {'region': 'Europe', 'avg_capacity': 75000.0}
         ])
 
         # Call the function
