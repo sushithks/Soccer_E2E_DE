@@ -35,17 +35,21 @@ class stadium_count(unittest.TestCase):
     def test_returns_stadium_count(self):
         # Sample input data
         data = [
-            {'rank': 1, 'stadium': 'Michigan Stadium', 'capacity': 90000},
-            {'rank': 2, 'stadium': 'Wembley Stadium', 'capacity': 80000},
-            {'rank': 3, 'stadium': 'stadio Azteca', 'capacity': 75000},
-            {'rank': 4, 'stadium': 'Croke Park', 'capacity': 70000},
-            {'rank': 5, 'stadium': 'Shah Alam Stadium', 'capacity': 85000},
-            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000},
+            {'rank': 1, 'stadium': 'Michigan Stadium', 'capacity': 90000, 'country': 'USA'},
+            {'rank': 2, 'stadium': 'Wembley Stadium', 'capacity': 80000, 'country': 'UK'},
+            {'rank': 3, 'stadium': 'Stadio Azteca', 'capacity': 75000, 'country': 'Mexico'},
+            {'rank': 4, 'stadium': 'Croke Park', 'capacity': 70000, 'country': 'Ireland'},
+            {'rank': 5, 'stadium': 'Shah Alam Stadium', 'capacity': 85000, 'country': 'Malaysia'},
+            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA'},
         ]
 
         # Expected output DataFrame
         expected = pd.DataFrame([
-
+            {'stadium_count': 2, 'country': 'USA'},
+            {'stadium_count': 1, 'country': 'UK'},
+            {'stadium_count': 1, 'country': 'Mexico'},
+            {'stadium_count': 1, 'country': 'Ireland'},
+            {'stadium_count': 1, 'country': 'Malaysia'}
         ])
 
         # Call the function
