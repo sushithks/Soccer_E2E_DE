@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from Test.data_validation import top_stadium
+from Test.data_validation import top_stadium,stadium_count,stadium_capacity,stadium_rank
 
 class TestTopStadium(unittest.TestCase):
     def test_top_stadium_returns_top_5(self):
@@ -31,7 +31,7 @@ class TestTopStadium(unittest.TestCase):
 
 
 
-class stadium_count(unittest.TestCase):
+class stadiumCount(unittest.TestCase):
     def test_returns_stadium_count(self):
         # Sample input data
         data = [
@@ -40,7 +40,7 @@ class stadium_count(unittest.TestCase):
             {'rank': 3, 'stadium': 'Stadio Azteca', 'capacity': 75000, 'country': 'Mexico'},
             {'rank': 4, 'stadium': 'Croke Park', 'capacity': 70000, 'country': 'Ireland'},
             {'rank': 5, 'stadium': 'Shah Alam Stadium', 'capacity': 85000, 'country': 'Malaysia'},
-            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA'}
+            {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA'},
         ]
 
         # Expected output DataFrame
@@ -61,7 +61,7 @@ class stadium_count(unittest.TestCase):
 
 
 
-class stadium_capacity(unittest.TestCase):
+class stadiumCapacity(unittest.TestCase):
     def test_returns_stadium_capacity(self):
         # Sample input data
         data = [
@@ -88,7 +88,7 @@ class stadium_capacity(unittest.TestCase):
 
 
 
-class stadium_rank(unittest.TestCase):
+class stadiumRank(unittest.TestCase):
     def test_returns_stadium_rank(self):
         # Sample input data
         data = [
