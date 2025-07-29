@@ -100,11 +100,18 @@ class stadium_rank(unittest.TestCase):
              'region': 'East Asia'},
             {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA', 'region': 'North America'},
         ]
-
+        expected = pd.DataFrame([
+            {'rank': 1, 'stadium': 'Michigan Stadium', 'region': 'North America', 'region_rank': 1.0},
+            {'rank': 2, 'stadium': 'Wembley Stadium', 'region': 'Europe', 'region_rank': 1.0},
+            {'rank': 3, 'stadium': 'Stadio Azteca', 'region': 'North America', 'region_rank': 2.0},
+            {'rank': 4, 'stadium': 'Croke Park', 'region': 'Europe', 'region_rank': 2.0},
+            {'rank': 5, 'stadium': 'Shah Alam Stadium', 'region': 'East Asia', 'region_rank': 1.0},
+            {'rank': 6, 'stadium': 'Empower Field', 'region': 'North America', 'region_rank': 3.0}
+        ])
 
         # Call the function
         result = stadium_rank(data)
-        print(result)
+        pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
 
 
 if __name__ == '__main__':
