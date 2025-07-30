@@ -134,7 +134,7 @@ class stadiumCapacity(unittest.TestCase):
         ])
 
         # Call the function
-        result = stadium_capacity_avg(data)
+        result = stadium_capacity(data)
         pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
 
 
