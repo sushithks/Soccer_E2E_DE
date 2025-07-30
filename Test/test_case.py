@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from Test.data_validation import top_stadium,stadium_count,stadium_capacity,stadium_rank
+from Test.data_validation import top_stadium,stadium_count,stadium_capacity,stadium_rank,stadium_capacity_avg
 
 class TestTopStadium(unittest.TestCase):
     def test_top_stadium_returns_top_5(self):
@@ -134,7 +134,7 @@ class stadiumCapacity(unittest.TestCase):
         ])
 
         # Call the function
-        result = stadium_capacity(data)
+        result = stadium_capacity_avg(data)
         pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
 
 
