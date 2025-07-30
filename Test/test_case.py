@@ -115,7 +115,7 @@ class stadiumRank(unittest.TestCase):
 
 
 
-class stadiumCapacity(unittest.TestCase):
+class stadiumCapacityAvg(unittest.TestCase):
     def test_returns_stadium_rank(self):
         # Sample input data
         data = data = [
