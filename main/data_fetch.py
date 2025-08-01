@@ -31,7 +31,6 @@ def get_wikipedia_data(html):
 
     return table_rows
 
-print(get_wikipedia_data(html))
 
 
 
@@ -102,8 +101,6 @@ def transform_wikipedia_data(**kwargs):
 
     # push to xcom
     kwargs['ti'].xcom_push(key='rows', value=stadiums_df.to_json())
-
-    return "OK"
 
 
 
