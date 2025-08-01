@@ -141,11 +141,15 @@ class stadiumRegionCapacity(unittest.TestCase):
         # Sample input data
         data = data = [
                 {'rank': 1, 'stadium': 'Michigan Stadium', 'capacity': 90000, 'country': 'USA', 'region': 'North America'},
+                {'rank': 2, 'stadium': 'Wembley Stadium', 'capacity': 80000, 'country': 'UK', 'region': 'Europe'},
+                {'rank': 3, 'stadium': 'Stadio Azteca', 'capacity': 75000, 'country': 'Mexico', 'region': 'North America'},
+                {'rank': 4, 'stadium': 'Croke Park', 'capacity': 70000, 'country': 'Ireland', 'region': 'Europe'},
                 {'rank': 5, 'stadium': 'Shah Alam Stadium', 'capacity': 85000, 'country': 'Malaysia', 'region': 'East Asia'},
                 {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA', 'region': 'North America'},
             ]
         expected = pd.DataFrame([
                     {'rank': 1, 'stadium': 'Michigan Stadium', 'capacity': 90000, 'country': 'USA', 'region': 'North America', 'avg_capacity': 75000.0},
+                    {'rank': 2, 'stadium': 'Wembley Stadium', 'capacity': 80000, 'country': 'UK', 'region': 'Europe', 'avg_capacity': 75000.0}
                     ])
 
         # Call the function
