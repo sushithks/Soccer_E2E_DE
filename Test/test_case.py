@@ -136,5 +136,23 @@ class stadiumCapacityAvg(unittest.TestCase):
         pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
 
 
+class stadiumRegionCapacity(unittest.TestCase):
+    def test_returns_stadium_region_capacity(self):
+        # Sample input data
+        data = data = [
+                {'rank': 1, 'stadium': 'Michigan Stadium', 'capacity': 90000, 'country': 'USA', 'region': 'North America'},
+                {'rank': 5, 'stadium': 'Shah Alam Stadium', 'capacity': 85000, 'country': 'Malaysia', 'region': 'East Asia'},
+                {'rank': 6, 'stadium': 'Empower Field', 'capacity': 60000, 'country': 'USA', 'region': 'North America'},
+            ]
+        expected = pd.DataFrame([
+                    {'rank': 1, 'stadium': 'Michigan Stadium', 'capacity': 90000, 'country': 'USA', 'region': 'North America', 'avg_capacity': 75000.0},
+                    ])
+
+        # Call the function
+        result = stadium_capacity_avg(data)
+        pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
+
+
+
 if __name__ == '__main__':
     unittest.main()
