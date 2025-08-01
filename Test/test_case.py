@@ -116,7 +116,7 @@ class stadiumRank(unittest.TestCase):
 
 
 class stadiumCapacityAvg(unittest.TestCase):
-    def test_returns_stadium_rank(self):
+    def test_returns_stadium_capacisty_avg(self):
         # Sample input data
         data = data = [
                 {'rank': 1, 'stadium': 'Michigan Stadium', 'capacity': 90000, 'country': 'USA', 'region': 'North America'},
@@ -134,7 +134,6 @@ class stadiumCapacityAvg(unittest.TestCase):
         # Call the function
         result = stadium_capacity_avg(data)
         pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
-
 
 
 if __name__ == '__main__':
