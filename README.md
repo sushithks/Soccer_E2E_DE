@@ -48,7 +48,7 @@ This project demonstrates the end-to-end data engineering lifecycle:
 git clone https://github.com/sushithks/Soccer_E2E_DE.git
 cd Soccer_E2E_DE
 
-
+```
 
 🤝 Contributing
 Contributions and suggestions are welcome! Please open an issue or submit a pull request.
